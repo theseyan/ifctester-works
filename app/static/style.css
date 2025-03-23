@@ -1,0 +1,13 @@
+html, body {
+    font-family: Roboto, "Open Sans", "Segoe UI", sans-serif;
+}
+
+#output {
+    padding: 20px;
+    background-color: #e4e4e4;
+    border-radius: 15px;
+    font-family: monospace;
+    font-size: 1rem;
+    white-space: pre-wrap;
+    margin-top: 30px;
+}

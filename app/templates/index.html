@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IfcTester WASM playground</title>
+        <link rel="stylesheet" href="/static/style.css" />
+    </head>
+    <body>
+        <h1 id="status">Loading Pyodide...</h1>
+
+        Schema:
+        <select id="schema">
+            <option value="IFC4">IFC4</option>
+            <option value="IFC2X3">IFC2X3</option>
+            <option value="IFC4X3_ADD2">IFC4X3_ADD2</option>
+        </select>
+
+        <br /><br />
+        Get predefined types by entity name:
+        <input type="text" id="predef_types" placeholder="e.g. IfcWall" />
+        <button id="run_predef_types">Run</button>
+
+        <br /><br />
+        Get entity attributes:
+        <input type="text" id="entity_attrs" placeholder="e.g. IfcWall" />
+        <button id="run_entity_attrs">Run</button>
+
+        <!-- <br /><br />
+        Get applicable Psets by entity name:
+        <input type="text" id="psets" placeholder="e.g. IfcWall" />
+        <button id="run_psets">Run</button> -->
+
+        <br /><br />
+        Get material categories:
+        <button id="run_materials">Run</button>
+
+        <br /><br />
+        Get classification systems:
+        <button id="run_systems">Run</button>
+
+        <div id="output">Output will show up here.</div>
+
+        <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
+        <script type="module" src="/static/main.js"></script>
+    </body>
+</html>
