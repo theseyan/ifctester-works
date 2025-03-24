@@ -63,3 +63,33 @@ export async function getStandardClassificationSystems() {
 
     return result.toJs();
 }
+
+// Both IFC and IDS arguments are Uint8Arrays (file contents)
+export async function auditIfc(ifcData, idsData, ifc_id, ids_id) {
+    // Write the files to Python's filesystem
+    const ifcPath = `/tmp/${ifc_id}.ifc`;
+    const idsPath = `/tmp/${ids_id}.ids`;
+    pyodide.FS.writeFile(ifcPath, ifcData);
+    pyodide.FS.writeFile(idsPath, idsData);
+
+    const result = await pyodide.runPythonAsync(`
+        import ifcopenshell
+        import ifctester
+        import ifctester.reporter
+        import os
+
+        specs = ifctester.open("${idsPath}")
+        ifc = ifcopenshell.open("${ifcPath}")
+
+        specs.validate(ifc)
+        os.remove("${ifcPath}")
+        os.remove("${idsPath}")
+
+        engine = ifctester.reporter.Json(specs)
+        engine.report()
+        report = engine.to_string()
+        report
+    `);
+
+    return JSON.parse(result);
+}

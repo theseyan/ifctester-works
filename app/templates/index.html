@@ -7,11 +7,15 @@
     <body>
         <h1 id="status">Loading Pyodide...</h1>
 
+        <hr />
+        <h2>Autocompletion</h2>
+
         Schema:
         <select id="schema">
             <option value="IFC4">IFC4</option>
             <option value="IFC2X3">IFC2X3</option>
-            <option value="IFC4X3_ADD2">IFC4X3_ADD2</option>
+            <!-- IFC4X3 doesn't work. Why? -->
+            <!-- <option value="IFC4X3_ADD2">IFC4X3_ADD2</option> -->
         </select>
 
         <br /><br />
@@ -24,10 +28,10 @@
         <input type="text" id="entity_attrs" placeholder="e.g. IfcWall" />
         <button id="run_entity_attrs">Run</button>
 
-        <!-- <br /><br />
+        <br /><br />
         Get applicable Psets by entity name:
         <input type="text" id="psets" placeholder="e.g. IfcWall" />
-        <button id="run_psets">Run</button> -->
+        <button id="run_psets">Run</button>
 
         <br /><br />
         Get material categories:
@@ -36,7 +40,14 @@
         <br /><br />
         Get classification systems:
         <button id="run_systems">Run</button>
+        <hr />
 
+        <h2>Audit IFC</h2>
+        IFC file: <input type="file" id="ifc_file" /><br />
+        IDS file: <input type="file" id="ids_file" /><br />
+        <button id="run_audit">Run</button>
+
+        <hr />
         <div id="output">Output will show up here.</div>
 
         <script type="text/javascript" src="https://cdn.jsdelivr.net/pyodide/v0.26.4/full/pyodide.js"></script>
