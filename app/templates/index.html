@@ -8,44 +8,56 @@
         <h1 id="status">Loading Pyodide...</h1>
 
         <hr />
-        <h2>Autocompletion</h2>
+        <i>Welcome to the WASM playground where we learn about IfcOpenShell's WASM build :)</i>
 
-        Schema:
-        <select id="schema">
-            <option value="IFC4">IFC4</option>
-            <option value="IFC2X3">IFC2X3</option>
-            <!-- IFC4X3 doesn't work. Why? -->
-            <!-- <option value="IFC4X3_ADD2">IFC4X3_ADD2</option> -->
-        </select>
+        <div id="body" style="display: none;">
+            <h2>Autocompletion</h2>
 
-        <br /><br />
-        Get predefined types by entity name:
-        <input type="text" id="predef_types" placeholder="e.g. IfcWall" />
-        <button id="run_predef_types">Run</button>
+            Schema:
+            <select id="schema">
+                <option value="IFC4">IFC4</option>
+                <option value="IFC2X3">IFC2X3</option>
+                <!-- IFC4X3 doesn't work. Why? -->
+                <!-- <option value="IFC4X3_ADD2">IFC4X3_ADD2</option> -->
+            </select>
 
-        <br /><br />
-        Get entity attributes:
-        <input type="text" id="entity_attrs" placeholder="e.g. IfcWall" />
-        <button id="run_entity_attrs">Run</button>
+            <br /><br />
+            Get predefined types by entity name:
+            <input type="text" id="predef_types" placeholder="e.g. IfcWall" />
+            <button id="run_predef_types">Run</button>
 
-        <br /><br />
-        Get applicable Psets by entity name:
-        <input type="text" id="psets" placeholder="e.g. IfcWall" />
-        <button id="run_psets">Run</button>
+            <br /><br />
+            Get entity attributes:
+            <input type="text" id="entity_attrs" placeholder="e.g. IfcWall" />
+            <button id="run_entity_attrs">Run</button>
 
-        <br /><br />
-        Get material categories:
-        <button id="run_materials">Run</button>
+            <br /><br />
+            Get applicable Psets by entity name:
+            <input type="text" id="psets" placeholder="e.g. IfcWall" />
+            <button id="run_psets">Run</button>
 
-        <br /><br />
-        Get classification systems:
-        <button id="run_systems">Run</button>
-        <hr />
+            <br /><br />
+            Get material categories:
+            <button id="run_materials">Run</button>
 
-        <h2>Audit IFC</h2>
-        IFC file: <input type="file" id="ifc_file" /><br />
-        IDS file: <input type="file" id="ids_file" /><br />
-        <button id="run_audit">Run</button>
+            <br /><br />
+            Get classification systems:
+            <button id="run_systems">Run</button>
+            <hr />
+
+            <h2>Audit IFC</h2>
+            IFC file: <input type="file" id="ifc_file" /><br />
+            IDS file: <input type="file" id="ids_file" /><br />
+            <button id="run_audit">Run</button>
+
+            <hr />
+            <h2>IDS Authoring</h2>
+            This demo will create and validate an IDS file with one specification - all walls must have a name. The demo code is present <a href="/static/ids_demo.js">here</a>.
+            The IDS module is a Javascript wrapper of the authoring functionality available in the `ifctester` WASM, the code can be found <a href="/static/ids.js">here</a>.
+            It's only a proof-of-concept at this stage and only supports the entity and attribute facets.
+            <br /><br />
+            <button id="run_ids_demo">Run IDS demo</button>
+        </div>
 
         <hr />
         <div id="output">Output will show up here.</div>

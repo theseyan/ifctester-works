@@ -1,10 +1,12 @@
 import * as lib from './lib.js';
+import * as ids from './ids.js';
+import idsDemoRun from './ids_demo.js';
 
 const IFCOS_URL = "static/ifcopenshell-0.8.2+d50e806-cp312-cp312-emscripten_3_1_58_wasm32.whl";
-const ODFPY_URL = "static/odfpy-1.4.3.dev0-py2.py3-none-any.whl";
 
 let statusNode = document.getElementById('status');
 let outputNode = document.getElementById('output');
+let bodyNode = document.getElementById('body');
 let pyodide = null;
 
 let schemaNode = document.getElementById('schema');
@@ -30,6 +32,9 @@ let audit = {
     run: document.getElementById('run_audit'),
     ifc: document.getElementById('ifc_file'),
     ids: document.getElementById('ids_file')
+};
+let idsDemo = {
+    run: document.getElementById('run_ids_demo')
 };
 
 // Load Pyodide
@@ -64,10 +69,13 @@ statusNode.innerHTML = "Loading IfcTester...";
 await micropip.install("ifctester");
 
 statusNode.innerHTML = "Ready!";
+bodyNode.style.display = "block";
 
 // Initialize library
 await lib.init(pyodide);
+await ids.init(pyodide);
 window.ifc = lib;
+window.ids = ids;
 
 predefTypes.run.onclick = async () => {
     const schema = schemaNode.value;
@@ -116,4 +124,9 @@ audit.run.onclick = async () => {
     audit.run.disabled = false;
     
     outputNode.innerHTML = JSON.stringify(result);
+}
+
+idsDemo.run.onclick = async () => {
+    const result = await idsDemoRun();
+    outputNode.textContent = result;
 }
