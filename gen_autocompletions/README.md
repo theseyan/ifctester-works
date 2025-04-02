@@ -1,5 +1,9 @@
 ## Autocompletions
-This repo contains some preliminary work to implement autocompletions support. The CLI tool pre-generates only the necessary IFC schema information for autocompletions in JSON, which can then be sent to the frontend where the IDS parser can provide context-based suggestions.
+
+> [!IMPORTANT]  
+> This code runs in the backend and was written prior to the decision of using IfcOpenShell WASM. Please see `/app` for the updated WASM playground.
+
+This directory contains some preliminary work to implement autocompletions support. The CLI tool pre-generates only the necessary IFC schema information for autocompletions in JSON, which can then be sent to the frontend where the IDS parser can provide context-based suggestions.
 
 ```bash
 python gen_autocompletions.py       # generate for all schemas
